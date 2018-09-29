@@ -35,7 +35,7 @@
 
 [[constraint]]
   branch = "master"
-  name = "github.com/GoogleCloudPlatform/microservices-demo"
+  name = "github.com/sebright/microservices-demo"
 
 [[constraint]]
   name = "github.com/golang/protobuf"

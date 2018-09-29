@@ -29,7 +29,7 @@
 [[projects]]
   branch = "master"
   digest = "1:3ef905a7059a17712b7b27315692992f84f356e828d38f6ff0624e04103ec675"
-  name = "github.com/GoogleCloudPlatform/microservices-demo"
+  name = "github.com/sebright/microservices-demo"
   packages = [
     "src/frontend/genproto",
     "src/frontend/money",
@@ -315,8 +315,8 @@
   input-imports = [
     "cloud.google.com/go/profiler",
     "contrib.go.opencensus.io/exporter/stackdriver",
-    "github.com/GoogleCloudPlatform/microservices-demo/src/frontend/genproto",
-    "github.com/GoogleCloudPlatform/microservices-demo/src/frontend/money",
+    "github.com/sebright/microservices-demo/src/frontend/genproto",
+    "github.com/sebright/microservices-demo/src/frontend/money",
     "github.com/golang/protobuf/proto",
     "github.com/google/uuid",
     "github.com/gorilla/mux",
