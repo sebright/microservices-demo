@@ -35,7 +35,7 @@
     "src/frontend/money",
   ]
   pruneopts = "UT"
-  revision = "6d969441585ade8c91c235115c7cdb12ac61354f"
+  revision = "13bf7c109a12fedc22cc09faf744f839d5a0257e"
 
 [[projects]]
   digest = "1:72856926f8208767b837bf51e3373f49139f61889b67dc7fd3c2a0fd711e3f7a"
