@@ -178,11 +178,11 @@ public class AdService {
   }
 
   static void initializeAds() {
-    cacheMap.put("Film Camera", Ad.newBuilder().setRedirectUrl( "/product/2ZYFJ3GM2N")
+    cacheMap.put("vintage", Ad.newBuilder().setRedirectUrl( "/product/2ZYFJ3GM2N")
         .setText("Film camera for sale. 50% off.").build());
-    cacheMap.put("City Bike", Ad.newBuilder().setRedirectUrl("/product/9SIQT8TOJO")
+    cacheMap.put("cycling", Ad.newBuilder().setRedirectUrl("/product/9SIQT8TOJO")
         .setText("City Bike for sale. 10% off.").build());
-    cacheMap.put("Home Barista Kit", Ad.newBuilder().setRedirectUrl("/product/1YMWWN1N4O")
+    cacheMap.put("cookware", Ad.newBuilder().setRedirectUrl("/product/1YMWWN1N4O")
         .setText("Home Barista kitchen kit for sale. Buy one, get second kit for free").build());
     logger.info("Default Ads initialized");
   }
