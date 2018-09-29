@@ -111,7 +111,7 @@ public class AdService {
         Span span = tracer.getCurrentSpan();
         span.putAttribute("method", AttributeValue.stringAttributeValue("getAds"));
         List<Ad> ads = new ArrayList<>();
-        logger.info("received ad request (context_words=" + req.getContextKeysCount() + ")");
+        logger.info("received ad request (context_words=" + req.getContextKeysList() + ")");
         if (req.getContextKeysCount() > 0) {
           span.addAnnotation(
               "Constructing Ads using context",
@@ -135,6 +135,7 @@ public class AdService {
           span.addAnnotation("No Ads found based on context. Constructing random Ads.");
           ads = service.getDefaultAds();
         }
+        logger.info("looked up ads (ads=" + ads + ")");
         AdResponse reply = AdResponse.newBuilder().addAllAds(ads).build();
         responseObserver.onNext(reply);
         responseObserver.onCompleted();
@@ -148,7 +149,11 @@ public class AdService {
   static final HashMap<String, Ad> cacheMap = new HashMap<String, Ad>();
 
   Ad getAdsByKey(String key) {
-    return cacheMap.get(key);
+    Ad ad = cacheMap.get(key);
+    if (ad == null) {
+      logger.info("Context key not found; returning null: " + key);
+    }
+    return ad;
   }
 
 
@@ -173,11 +178,11 @@ public class AdService {
   }
 
   static void initializeAds() {
-    cacheMap.put("camera", Ad.newBuilder().setRedirectUrl( "/product/2ZYFJ3GM2N")
+    cacheMap.put("Film Camera", Ad.newBuilder().setRedirectUrl( "/product/2ZYFJ3GM2N")
         .setText("Film camera for sale. 50% off.").build());
-    cacheMap.put("bike", Ad.newBuilder().setRedirectUrl("/product/9SIQT8TOJO")
+    cacheMap.put("City Bike", Ad.newBuilder().setRedirectUrl("/product/9SIQT8TOJO")
         .setText("City Bike for sale. 10% off.").build());
-    cacheMap.put("kitchen", Ad.newBuilder().setRedirectUrl("/product/1YMWWN1N4O")
+    cacheMap.put("Home Barista Kit", Ad.newBuilder().setRedirectUrl("/product/1YMWWN1N4O")
         .setText("Home Barista kitchen kit for sale. Buy one, get second kit for free").build());
     logger.info("Default Ads initialized");
   }
