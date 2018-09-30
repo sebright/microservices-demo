@@ -149,7 +149,17 @@ public class AdService {
   static final ImmutableListMultimap<String, Ad> adsMap = createAdsMap();
 
   Collection<Ad> getAdsByCategory(String category) {
-    return adsMap.get(category);
+    logger.info("looking up ad for category \"" + category + "\"");
+    if (category.equals("photography")) {
+      try {
+        Thread.sleep(5000);
+      } catch (InterruptedException e) {
+        logger.info(e);
+      }
+    }
+    Collection<Ad> ads = adsMap.get(category);
+    logger.info("found  " + ads.size() + " ads for category \"" + category + "\"");
+    return ads;
   }
 
   private static final Random random = new Random();
